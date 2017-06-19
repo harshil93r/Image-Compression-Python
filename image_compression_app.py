@@ -3,7 +3,7 @@ Dyanmic  compressed image served through pyramid app.
 
 Run 'python image_compression_app.py'.
 
-Now go to terminal and view any image of PNG/JPG/JPEG and many more, 
+Now go to terminal and view any image of PNG/JPG/JPEG and many more,
 present in the same directory as this app with using URL :
 	localhost:8080/images/{imageName}?compressed=true if compression is required.
 	localhost:8080/images/{imageName}?compressed=true?res=50 compress by 50%.
@@ -29,7 +29,7 @@ def serve_image(request):
             img = Image.open('images/' + request.matchdict['imageName'])
             tmp = StringIO()
             img.save(tmp, 'JPEG', quality=int(
-                request.params.get('res'), 80))
+                request.params.get('res',80)))
             tmp.seek(0)
             output_data = tmp.getvalue()
 
